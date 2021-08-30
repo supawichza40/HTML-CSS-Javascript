@@ -1,0 +1,17 @@
+{% extends "basic_app/basic_app_base.html"%}
+
+{% block body_block %}
+<h1>Delete {{school.name}}?</h1>
+we need to pass lower case of your model. or define your own context_object_name in your delete class
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+    <a href="{% url "basic_app:detail" pk=school.pk  %}">Cancel</a>
+
+    <!-- this allow us to grab school_details.pk primary key from that object -->
+</form>
+
+{% endblock %}
+
+
+

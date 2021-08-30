@@ -1,0 +1,18 @@
+{% extends "basic_app/base.html" %}
+{% load static %}
+{%block bodyblock%}
+
+<div class = "jumbotron">
+    <a href="{% url "basic_app:register" %}">Click here to register</a>
+    <form action="{% url "basic_app:login" %}" method="post">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" name="username" id="">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="">
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+{% endblock %}

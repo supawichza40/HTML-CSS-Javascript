@@ -34,7 +34,7 @@ def user_login(request):
         
         user = authenticate(username = username,password = password)
         #this will authenticate user for you
-        print("hello world")
+        #user only return true or false from authenticate
         if user:
             if user.is_active:
                 login(request,user)
