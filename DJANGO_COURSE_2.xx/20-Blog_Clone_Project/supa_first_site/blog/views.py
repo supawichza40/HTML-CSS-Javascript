@@ -44,7 +44,7 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
     
 class DraftListView(LoginRequiredMixin,ListView):
     login_url = "/login/"
-    redirect_field_name = "blog/post_list.html"
+    redirect_field_name = "blog/post_draft_list.html"
     model = Post
     
     def get_queryset(self):
@@ -69,7 +69,7 @@ def add_comment_to_post(request,pk):
             comment.post = post
             #this directly comment to model foreign key blog.post
             comment.save()
-            return redirect("post_detial",pk = post.pk)#since post_detail require a pk.
+            return redirect("post_detail",pk = post.pk)#since post_detail require a pk.
     else:
         form = CommentForm()
     return render(request,"blog/comment_form.html",{"form":form})#this is related to else statement only.
@@ -92,7 +92,7 @@ def comment_remove(request,pk):
 @login_required
 def post_publish(request,pk):
     post = get_object_or_404(Post,pk = pk)
-    post.publish
+    post.publish()
     return redirect("post_detail",pk=pk)
     
     

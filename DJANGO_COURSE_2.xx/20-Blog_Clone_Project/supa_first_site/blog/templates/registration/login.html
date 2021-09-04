@@ -8,7 +8,7 @@
     {% endif %}
     <form action="{% url "login" %}" method="post">
         {% csrf_token %}
-        {% form.as_p% }
+        {{ form.as_p }}
         <input type="submit" value="Login">
         <!-- this will be use by urls.py for login from import views. -->
         <input type="hidden" name="next" value="{{next}}">
