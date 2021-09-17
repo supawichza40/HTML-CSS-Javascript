@@ -1,0 +1,16 @@
+{% extends 'posts/post_base.html' %}
+
+{% block post_content %}
+    <div class = "col-md-8">
+        <p>hello</p>
+        {% for i in context%}
+            <h1>I am in for loop</h1>
+            <h1>{{i.message}}</h1>
+            <h4><a href="{{i.work_files.url}} download"></a>work</h4>
+        {% endfor %}
+        <h1>I am in post_detail</h1>
+        {% include "posts/_post.html" %}
+
+    </div>
+{% endblock post_content %}
+    

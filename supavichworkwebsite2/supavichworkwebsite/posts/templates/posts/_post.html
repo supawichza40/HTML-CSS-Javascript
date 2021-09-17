@@ -1,0 +1,31 @@
+{% comment %} posts/_post.html {% endcomment %}
+
+<div class = "post media">
+    <h3>{{post.message_html|safe}}</h3>
+    <div>
+        <h1>I am in _post</h1>
+        {% for i in context %}
+            <h1>hello</h1>
+            {{i.message}}
+        {% endfor %}
+        <strong>{{post.user.username}}</strong>
+        <p>and it also require media_url to be pass otherwise will not link to the file.</p>
+        <strong><a href="{{MEDIA_URL}}{{post.work_files}}" download>work</a></strong>
+        <strong><a href="{{ MEDIA_URL}}{{post.work_files}}" download>work</a></strong>
+        <h5>
+        <span>
+            <a href="{% url "posts:for_user" username=post.user.username %}"></a>
+        </span>
+        <time>
+            <a href="{% url "posts:single" username=post.user.username pk=post.pk %}"></a>
+        </time>
+        </h5>
+        <div>
+            {% if request.user.is_authenticated and post.user == user  %}
+                <a href="{% url "posts:delete" pk=post.pk %}" title = "delete">Remove</a>
+                
+    
+            {% endif %}
+        </div>
+    </div>
+</div>
